@@ -30,6 +30,6 @@ public class P1_GoogleTittleVerification {
         }else{
             System.out.println("Title verification FAILED");
         }
-
+        driver.close();
     }
 }
