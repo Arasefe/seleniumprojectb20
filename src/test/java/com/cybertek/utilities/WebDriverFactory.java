@@ -25,24 +25,24 @@ public class WebDriverFactory {
 
     public static WebDriver getDriver(String name) {
 
-        switch (name) {
-            case "Chrome Driver":
+        switch (name.toLowerCase()) {
+            case "chrome":
                 WebDriverManager.chromedriver().setup();
                 return new ChromeDriver();
 
-            case "FireFox Driver":
+            case "firefox":
                 WebDriverManager.firefoxdriver().setup();
                 return new FirefoxDriver();
 
-            case "Opera Driver":
+            case "opera":
                 WebDriverManager.operadriver().setup();
                 return new OperaDriver();
 
-            case "Edge Driver":
+            case "edge":
                 WebDriverManager.edgedriver().setup();
                 return new EdgeDriver();
 
-            case "InternetExplorer":
+            case "internet explorer":
                 WebDriverManager.iedriver().setup();
                 return new InternetExplorerDriver();
 
