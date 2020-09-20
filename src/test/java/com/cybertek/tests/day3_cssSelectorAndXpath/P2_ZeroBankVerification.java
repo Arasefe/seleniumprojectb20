@@ -1,4 +1,4 @@
-package com.cybertek.tests.day3_cssAndXpath;
+package com.cybertek.tests.day3_cssSelectorAndXpath;
 
 import io.github.bonigarcia.wdm.WebDriverManager;
 import org.openqa.selenium.WebDriver;
@@ -10,7 +10,7 @@ TC #1: Zero Bank title verification
 2.Go to http://zero.webappsecurity.com/login.html
 3.Verify titleExpected: “Zero -Log in”
  */
-public class Z1_ZeroBankTitleVerification {
+public class P2_ZeroBankVerification {
     public static void main(String[] args) throws InterruptedException{
         WebDriverManager.chromedriver().setup();
         WebDriver driver=new ChromeDriver();

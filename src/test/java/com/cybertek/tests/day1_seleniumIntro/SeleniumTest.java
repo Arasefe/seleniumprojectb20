@@ -6,30 +6,50 @@ import org.openqa.selenium.chrome.ChromeDriver;
 
 public class SeleniumTest {
     public static void main(String[] args) throws InterruptedException {
-        // 1 Set up the web driver
+        //1- Setup the driver
         WebDriverManager.chromedriver().setup();
-        // 2 Create the instance of the chrome driver
-        WebDriver driver=new ChromeDriver();
-        // 3 test if driver is working
+        //System.setProperty("driver.type","path to the driver");
+        //System.setProperty("webdriver.chrome.driver","path to the driver");
+
+        //2- Create instance of the driver
+        WebDriver driver = new ChromeDriver(); //THIS LINE IS OPENING ME BROWSER
+
+        driver.manage().window().maximize();
+
+
+        //3- Use the driver instance to test selenium
         driver.get("https://www.google.com");
 
-        System.out.println("The title of the page is "+driver.getTitle());
-        String actualTitle=driver.getTitle();
-        System.out.println("Actual title of the page is: "+actualTitle);
-        String actualURL=driver.getCurrentUrl();
-        System.out.println("Actual URL is: "+actualURL);
-        //System.out.println("actualURL = " + actualURL);  actualURL.soutv
+        //System.out.println("The title of the page is: " + driver.getTitle());
 
-        Thread.sleep(3000);
+        String actualTitle = driver.getTitle();
+        System.out.println("ACTUAL TITLE STRING: " + actualTitle);
+
+        String actualUrl = driver.getCurrentUrl();
+        System.out.println("actualUrl = " + actualUrl);
+
+        Thread.sleep(1000);
+
         driver.navigate().back();
-        Thread.sleep(3000);
+
+        Thread.sleep(1000);
+
         driver.navigate().forward();
-        Thread.sleep(3000);
+
+        Thread.sleep(1000);
+
         driver.navigate().refresh();
+
+        Thread.sleep(1000);
+
         driver.navigate().to("https://www.facebook.com");
-        System.out.println("Source Page is "+ driver.getPageSource());
 
+        String pageSource = driver.getPageSource();
 
+        System.out.println("pageSource = " + pageSource);
 
+        driver.close();
     }
+
 }
+

@@ -5,7 +5,7 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 
-public class P1_Gurhan {
+public class P1_CybertekForgotPassword {
     public static void main(String[] args) {
         //TC #1: PracticeCybertek.com_ForgotPassword WebElement verification
         //1. Open Chrome browser
