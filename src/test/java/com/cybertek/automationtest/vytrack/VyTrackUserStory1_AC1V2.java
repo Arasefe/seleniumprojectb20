@@ -4,6 +4,7 @@ import com.cybertek.utilities.WebDriverFactory;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.interactions.Actions;
 import org.testng.Assert;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
@@ -11,7 +12,7 @@ import org.testng.annotations.Test;
 
 import java.util.concurrent.TimeUnit;
 
-public class VyTrackUserStory1_AC1 {
+public class VyTrackUserStory1_AC1V2 {
     WebDriver driver;
 
 
@@ -26,7 +27,6 @@ public class VyTrackUserStory1_AC1 {
         //get the page
         driver.get("https://qa2.vytrack.com/user/login");
     }
-
 
     @Test
     public void vyTrackVehicleOdometer() throws InterruptedException {
@@ -44,24 +44,26 @@ public class VyTrackUserStory1_AC1 {
         Then the driver should be able to see “Vehicles Odometers” page with vehicle odometer information on the grid
         */
 
-        //Fleet
-        WebElement fleet=driver.findElement(By.xpath("/html/body/div[2]/div[2]/header/div[2]/ul/li[1]/a/span"));
-        driver.manage().timeouts().implicitlyWait(4,TimeUnit.SECONDS);
-        fleet.click();
+        Actions action = new Actions(driver);
+        //hover over Fleet
+        WebElement fleetDropDown=driver.findElement(By.xpath("/html/body/div[2]/div[2]/header/div[2]/ul/li[1]/a/span"));
+        action.moveToElement(fleetDropDown);
+        Thread.sleep(3000);
 
+        //find Vehicles Odometers and click on it
+        //*[@id="main-menu"]/ul/li[1]/div/div/ul/li[4]/a/span
         //*[@id="main-menu"]/ul/li[1]/div/div/ul/li[4]/a/span
         WebElement vehicleOdometer=driver.findElement(By.xpath("//*[@id=\"main-menu\"]/ul/li[1]/div/div/ul/li[4]/a/span"));
-        driver.manage().timeouts().implicitlyWait(4,TimeUnit.SECONDS);
+
         vehicleOdometer.click();
-
-
-
+        Thread.sleep(1000);
         String expectedResult="Vehicles Odometers";
         //*[text()='Vehicles Odometers']
         String actualResult=driver.findElement(By.xpath("//*[.='Vehicles Odometers']")).getText();
 
         Assert.assertEquals(actualResult,expectedResult,"Actual result does not not match expected result, FAILED!!!");
         Thread.sleep(3000);
+
     }
 
     @AfterMethod
@@ -70,5 +72,5 @@ public class VyTrackUserStory1_AC1 {
         driver.close();
     }
 
-}
 
+}
