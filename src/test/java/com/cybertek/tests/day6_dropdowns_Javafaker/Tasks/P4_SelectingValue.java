@@ -31,7 +31,7 @@ public class P4_SelectingValue {
         driver.get("http://practice.cybertekschool.com/dropdown");
     }
     @Test
-    public void selectOptionMethod(){
+    public void selectMultipleOptionsMethod1(){
         // 3. Select all the options from multiple select dropdown.
         // 4. Print out all selected values.
         // 5. Deselect all values.
@@ -46,6 +46,26 @@ public class P4_SelectingValue {
 
         Assert.assertTrue(multipleSelect.getAllSelectedOptions().isEmpty());
 
+    }
+
+    public void selectMultipleOptionsMethod2() throws InterruptedException {
+        // 3. Select all the options from multiple select dropdown.
+
+        // 5. Deselect all values.
+
+        Select multipleSelect = new Select(driver.findElement(By.xpath("//select[@name='Languages']")));
+        List<WebElement> list = multipleSelect.getAllSelectedOptions();
+        // Loop through the options to select all of them
+        // 4. Print out all selected values.
+        for (WebElement eachOption : list) {
+            Thread.sleep(500);
+            eachOption.click();
+            System.out.println("Selected: " + eachOption.getText());
+            // Asserting the option is actually selected or not
+            Assert.assertTrue(eachOption.isSelected(),"The option "+eachOption.getText()+" is not selected");
+
+
+        }
     }
 
     @AfterMethod

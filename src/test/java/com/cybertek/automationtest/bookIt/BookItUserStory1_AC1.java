@@ -1,6 +1,7 @@
 package com.cybertek.automationtest.bookIt;
 
 import io.github.bonigarcia.wdm.WebDriverManager;
+import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 
@@ -19,5 +20,13 @@ public class BookItUserStory1_AC1 {
 
         //3- Use the driver instance to test selenium
         driver.get("https://qa2.vytrack.com/user/login");
+
+        driver.findElement(By.xpath("//input[@name='email']")).sendKeys("sdarben7g@alibaba.com");
+        driver.findElement(By.xpath("//input[@name='password']")).sendKeys("angiecoatham");
+        driver.findElement(By.xpath("//button[@type='submit']")).click();
+
+
+
+
     }
 }

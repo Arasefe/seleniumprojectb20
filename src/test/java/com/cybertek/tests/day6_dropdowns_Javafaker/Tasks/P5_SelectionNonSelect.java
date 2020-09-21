@@ -26,11 +26,10 @@ public class P5_SelectionNonSelect {
     @Test
     public void selectNonSelectMethod(){
         // 3. Click to non-select dropdown
-        // 4. Select Facebook from dropdown
-        // 5. Verify title is “Facebook - Log In or Sign Up”
         driver.findElement(By.id("dropdownMenuLink")).click();
-
+        // 4. Select Facebook from dropdown
         driver.findElement(By.xpath("//*[text()='Facebook']")).click();
+        // 5. Verify title is “Facebook - Log In or Sign Up”
         String actualTitle=driver.getTitle();
         String expectedTitle="Facebook - Log In or Sign Up";
 

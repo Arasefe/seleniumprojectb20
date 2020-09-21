@@ -1,46 +1,76 @@
 package com.cybertek.automationtest.vytrack;
 
-import io.github.bonigarcia.wdm.WebDriverManager;
+import com.cybertek.utilities.WebDriverFactory;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.interactions.Actions;
+import org.testng.Assert;
+import org.testng.annotations.AfterMethod;
+import org.testng.annotations.BeforeMethod;
+import org.testng.annotations.Test;
 
 import java.util.concurrent.TimeUnit;
 
 public class VyTrackUserStory1_AC1 {
-    public static void main(String[] args) {
-        //1- Setup the driver
-        WebDriverManager.chromedriver().setup();
-        //System.setProperty("driver.type","path to the driver");
-        //System.setProperty("webdriver.chrome.driver","path to the driver");
+    WebDriver driver;
 
-        //2- Create instance of the driver
-        WebDriver driver = new ChromeDriver(); //THIS LINE IS OPENING ME BROWSER
 
+    @BeforeMethod
+    public void setUpMethod() {
+        //open a new browser
+        driver = WebDriverFactory.getDriver("chrome");
+        //maximize page
         driver.manage().window().maximize();
-
-
-        //3- Use the driver instance to test selenium
+        //implicit wait
+        driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
+        //get the page
         driver.get("https://qa2.vytrack.com/user/login");
-
-
-        driver.findElement(By.xpath("//input[@type='text']")).sendKeys("user164");
-        driver.findElement(By.xpath("//input[@type='password']")).sendKeys("UserUser123");
-        driver.findElement(By.xpath("//button[@type='submit']")).click();
-        // When the driver clicks the Vehicle Odometer Page from drop down menu
-
-        driver.findElement(By.xpath("(//li[@class='dropdown dropdown-level-1'])[1]")).click();
-        driver.findElement(By.xpath("(//*[@class='title title-level-2'])[2]")).click();
-        //Then the driver should be able to see “Vehicles Odometers” page with vehicle odometer information on the grid
-        driver.manage().timeouts().implicitlyWait(15, TimeUnit.SECONDS);
-        String expectedResult="Vehicle Odometer - Entities - System - Car - Entities - System";
-        String actualResult=driver.getTitle();
-        if(actualResult.equals(expectedResult)){
-            System.out.println("Title verification PASSED!!");
-        }else{
-            System.out.println("Title Verification FAILED!!");
-        }
-        driver.close();
-
     }
+
+
+    @Test
+    public void vyTrackVehicleOdometer() throws InterruptedException {
+        WebElement userNameInput = driver.findElement(By.name("_username"));
+        userNameInput.sendKeys("user165");
+        WebElement passwordInput = driver.findElement(By.name("_password"));
+        passwordInput.sendKeys("UserUser123");
+        WebElement loginButton = driver.findElement(By.id("_submit"));
+        loginButton.click();
+        driver.manage().timeouts().implicitlyWait(15, TimeUnit.SECONDS);
+         /*
+        Given the driver on VyTrack application home page (Quick Launchpad).
+        When hover over fleet module
+        And the driver clicks on “Vehicle Odometer” in drop down menu
+        Then the driver should be able to see “Vehicles Odometers” page with vehicle odometer information on the grid
+        */
+
+        Actions action = new Actions(driver);
+        //Fleet
+        WebElement fleet=driver.findElement(By.xpath("/html/body/div[2]/div[2]/header/div[2]/ul/li[1]/a/span"));
+        driver.manage().timeouts().implicitlyWait(4,TimeUnit.SECONDS);
+        fleet.click();
+
+        //*[@id="main-menu"]/ul/li[1]/div/div/ul/li[4]/a/span
+        WebElement vehicleOdometer=driver.findElement(By.xpath("//*[@id=\"main-menu\"]/ul/li[1]/div/div/ul/li[4]/a/span"));
+        driver.manage().timeouts().implicitlyWait(4,TimeUnit.SECONDS);
+        vehicleOdometer.click();
+
+
+
+        String expectedResult="Vehicles Odometers";
+        //*[text()='Vehicles Odometers']
+        String actualResult=driver.findElement(By.xpath("//*[.='Vehicles Odometers']")).getText();
+
+        Assert.assertEquals(actualResult,expectedResult,"Actual result does not not match expected result, FAILED!!!");
+        Thread.sleep(3000);
+    }
+
+    @AfterMethod
+    public void teardown() throws InterruptedException {
+        Thread.sleep(3000);
+        driver.close();
+    }
+
 }
+
