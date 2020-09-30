@@ -6,6 +6,7 @@ import org.openqa.selenium.Alert;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
+import org.testng.Assert;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 
@@ -16,7 +17,7 @@ public class AlertPractice {
     WebDriver driver;
 
     @BeforeMethod
-    public void setupMethod() {
+    public void setupMethod(){
         driver = WebDriverFactory.getDriver("chrome");
         driver.manage().window().maximize();
         driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
@@ -34,8 +35,12 @@ public class AlertPractice {
     6. Verify “You entered: hello” text is displayed.
      */
     @Test
-    public void p3_prompt_alert_practice() {
+    public void p3_prompt_alert_practice(){
         WebElement promptAlertButton = driver.findElement(By.xpath("//button[.='Click for JS Prompt']"));
+
+        //WebElement resultText = driver.findElement(By.id("result"));
+        //System.out.println(resultText.isDisplayed());
+        //Assert.assertFalse(resultText.isDisplayed());
 
         promptAlertButton.click();
 
@@ -46,10 +51,23 @@ public class AlertPractice {
         BrowserUtils.wait(2);
 
         //Sending keys to the "prompt" alert
-        alert.sendKeys("something is happening");
+        String input = "something is happening";
 
+        alert.sendKeys(input);
+
+        BrowserUtils.wait(2);
         //Accepting the alert
         alert.accept();
+
+        WebElement resultText = driver.findElement(By.id("result"));
+
+        Assert.assertTrue(resultText.isDisplayed(), "The result text is not displayed. Verification FAILED!!!");
+
+        //Verify that the result text CONTAINS the entered input
+        String actual = resultText.getText();
+
+        Assert.assertTrue(actual.contains(input), "The result DOES NOT contain the input. Verification FAILED!!!");
+
 
 
     }
