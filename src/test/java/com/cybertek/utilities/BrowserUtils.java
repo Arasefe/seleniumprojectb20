@@ -22,12 +22,12 @@ public class BrowserUtils {
      */
     public static List<String> getElementsText(List<WebElement> list){
 
-        List<String> webelementsAsString = new ArrayList<>();
+        List<String> webElementsAsString = new ArrayList<>();
 
         for (WebElement each : list) {
-            webelementsAsString.add(each.getText());
+            webElementsAsString.add(each.getText());
         }
-        return webelementsAsString;
+        return webElementsAsString;
 
     }
 
