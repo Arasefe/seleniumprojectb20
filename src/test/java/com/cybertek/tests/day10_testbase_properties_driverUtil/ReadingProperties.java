@@ -42,5 +42,4 @@ public class ReadingProperties {
         System.out.println("ConfigurationReader.getProperty(\"smartbearUrl\") = " + ConfigurationReader.getProperty("smartbearUrl"));
         //break until : 3.08PM CST - 4.08PM EST
     }
-
 }

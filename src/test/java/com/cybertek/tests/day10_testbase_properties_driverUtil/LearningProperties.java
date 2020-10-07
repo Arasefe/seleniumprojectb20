@@ -8,11 +8,11 @@ public class LearningProperties {
         System.out.println("System.getProperty(\"os.name\") = " + System.getProperty("os.name"));
         System.out.println("System.getProperty(\"user.name\") = " + System.getProperty("user.name"));
 
-        // key=value
-        // os.name=Mac OS X
-        // user.name=banuyildirim
-        // keys have to be exactly the same as value when you pass it
-        // otherwise it will not work. If you are getting 'null' make sure your key is correct
+        //key=value
+        //os.name=Mac OS X
+        //user.name=cybertekchicago-1
+        // keys has to be exactly the same value when you pass it.
+        // otherwise it will not work. so if you are getting 'null' make sure your key is correct
 
 
     }
