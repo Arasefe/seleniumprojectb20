@@ -31,12 +31,16 @@ public class Driver {
         return driver;
     }
 
-    public static void closeDriver() throws InterruptedException {
-        Thread.sleep(3000);
-        if (driver != null) {
-            driver.quit();
-            driver = null;
+    public static void closeDriver() {
+        try {
+            Thread.sleep(3000);
+            if (driver != null) {
+                driver.quit();
+                driver = null;
+            }
+        } catch (InterruptedException e) {
+            e.printStackTrace();
         }
-    }
 
+    }
 }
