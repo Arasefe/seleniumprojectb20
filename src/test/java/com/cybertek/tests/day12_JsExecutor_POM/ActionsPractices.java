@@ -105,17 +105,12 @@ public class ActionsPractices {
 
         actions.release().perform();
 
-
-
-
         //3. Assert:
         //-Text in big circle changed to: “You did great
         String expected = "You did great!";
         String actual = bigCircle.getText();
 
         Assert.assertTrue(actual.equals(expected));
-
-
 
         BrowserUtils.wait(10);
         Driver.closeDriver();
@@ -137,7 +132,6 @@ public class ActionsPractices {
         BrowserUtils.wait(2);
         //using "context click" method to right click on the box
         actions.contextClick(box).perform();
-
 
         //3. Alert will open. Switch to alert
         Alert alert = Driver.getDriver().switchTo().alert();

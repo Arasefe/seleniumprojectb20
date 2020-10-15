@@ -11,7 +11,7 @@ public class PageObjectModelPractice {
     public void login_to_smartbear() {
         LoginPage loginPage = new LoginPage();
         //get url --> smartbear
-        loginPage.UserInput.sendKeys("anyusername");
+        loginPage.usernameInput.sendKeys("anyusername");
 
     }
 }
