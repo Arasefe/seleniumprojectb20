@@ -8,6 +8,7 @@ import org.testng.annotations.Test;
 
 public class NegativeLoginTest {
     LoginPage loginPage;
+
     @Test (description = "entering incorrect username")
     public void negative_login_test1(){
 
