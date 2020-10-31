@@ -7,10 +7,9 @@ import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebElement;
 import org.testng.annotations.Test;
 
-public class JavaScriptExecutor_Practices {
-
+public class JavaScriptExecutor_Practice1 {
     @Test
-    public void scrollUsingJsExecutor1(){
+    public void scrollUsingJsExecutor1() {
         //Get the page to scroll
         Driver.getDriver().get("http://practice.cybertekschool.com/infinite_scroll");
 
@@ -20,7 +19,7 @@ public class JavaScriptExecutor_Practices {
         //use execute script method
 
 
-        for (int i = 0; i < 10 ; i++) {
+        for (int i = 0; i < 10; i++) {
             BrowserUtils.wait(1);
             js.executeScript("window.scrollBy(0, 500)");
 
@@ -29,7 +28,7 @@ public class JavaScriptExecutor_Practices {
     }
 
     @Test
-    public void scrollUsingJsExecutor2(){
+    public void scrollUsingJsExecutor2() {
         //get the page to scroll
         Driver.getDriver().get("http://practice.cybertekschool.com/large");
 
