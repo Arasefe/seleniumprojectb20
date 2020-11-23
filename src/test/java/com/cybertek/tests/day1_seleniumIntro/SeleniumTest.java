@@ -3,6 +3,7 @@ package com.cybertek.tests.day1_seleniumIntro;
 import io.github.bonigarcia.wdm.WebDriverManager;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.chrome.ChromeOptions;
 
 public class SeleniumTest {
     public static void main(String[] args) throws InterruptedException {
@@ -14,7 +15,11 @@ public class SeleniumTest {
         //2- Create instance of the driver
         WebDriver driver = new ChromeDriver(); //THIS LINE IS OPENING ME BROWSER
 
-        driver.manage().window().maximize();
+        //driver.manage().window().maximize(); if this does not work
+
+        ChromeOptions options = new ChromeOptions();
+        options.addArguments("start-maximized");
+        driver = new ChromeDriver(options);
 
 
         //3- Use the driver instance to test selenium
