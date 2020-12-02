@@ -23,10 +23,9 @@ public class OpenLinksInDifferentTabs {
         System.out.println(columnDriver.findElements(By.tagName("a")).size());
 
         for (int i = 1; i < columnDriver.findElements(By.tagName("a")).size(); i++) {
-            String clinkOnLink= Keys.chord(Keys.COMMAND,Keys.ENTER);                    // Keys.CONTROL-->Windows
+            String clinkOnLink= Keys.chord(Keys.COMMAND,Keys.ENTER);            //
             columnDriver.findElements(By.tagName("a")).get(i).sendKeys(clinkOnLink);
         }
-
 
 
 

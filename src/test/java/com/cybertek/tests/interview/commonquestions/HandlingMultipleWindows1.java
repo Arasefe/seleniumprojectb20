@@ -10,13 +10,13 @@ import org.openqa.selenium.chrome.ChromeDriver;
 import java.util.Iterator;
 import java.util.Set;
 
-public class HandlingMultipleWindows {
+public class HandlingMultipleWindows1 {
     public static void main(String[] args) throws InterruptedException {
         WebDriverManager.chromedriver().setup();
         WebDriver driver=new ChromeDriver();
         driver.manage().window().maximize();
         driver.get("http://www.qaclickacademy.com/practice.php");
-        //1 Step I store all windows to a String Set
+
 
         WebElement footerDriver=driver.findElement(By.id("gf-BIG"));            // Limiting webDriver scope
         WebElement columnDriver=footerDriver.findElement(By.xpath("//div[@id='gf-BIG']/table/tbody/tr/td"));
@@ -26,6 +26,7 @@ public class HandlingMultipleWindows {
             columnDriver.findElements(By.tagName("a")).get(i).sendKeys(clinkOnLink);
             Thread.sleep(5000);
         }
+        //1 Step I store all windows to a String Set
         Set<String> handles=driver.getWindowHandles();
         //2 Step I create String Iterator
         Iterator<String>it=handles.iterator();

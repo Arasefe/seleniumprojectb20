@@ -13,7 +13,7 @@ import java.io.IOException;
 import java.util.Iterator;
 import java.util.Set;
 
-public class NewWindow {
+public class HandlingMultipleWindows2 {
 
     public static void main(String[] args) throws IOException {
 
@@ -30,14 +30,12 @@ public class NewWindow {
         //driver.switchTo().newWindow(WindowType.WINDOW);
 
         Set<String> handles=driver.getWindowHandles();
-
         Iterator<String> it=handles.iterator();
-
         String parentWindowId = it.next();
-
         String childWindow =it.next();
-
         driver.switchTo().window(childWindow);
+
+
 
         driver.get("https://rahulshettyacademy.com/");
 

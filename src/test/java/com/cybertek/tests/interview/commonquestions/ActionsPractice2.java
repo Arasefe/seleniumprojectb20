@@ -7,8 +7,9 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.interactions.Actions;
 
-public class HandlingActions {
+public class ActionsPractice2 {
     public static void main(String[] args) {
+
         WebDriverManager.chromedriver().setup();
         WebDriver driver=new ChromeDriver();
         driver.manage().window().maximize();
@@ -17,10 +18,11 @@ public class HandlingActions {
 
         Actions actions=new Actions(driver);
         WebElement signIn=driver.findElement(By.cssSelector("a[id='nav-link-accountList']"));
-        //actions.moveToElement(signIn).build().perform();
-
-        actions.contextClick(signIn).build().perform();
-
-        driver.close();
+        WebElement el=driver.findElement(By.xpath("//a[.='Conditions of Use']"));
+        actions.doubleClick(signIn).perform();
+        actions.contextClick().perform();
+        actions.moveToElement(el).click();
+        actions.doubleClick().perform(); actions.moveToElement(el).doubleClick().build().perform();
     }
+
 }

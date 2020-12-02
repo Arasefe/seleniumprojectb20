@@ -9,13 +9,13 @@ public class MaximizeWindowJSExecutor {
     public static void main(String[] args) {
 
         WebDriverManager.chromedriver().setup();
-
+        WebDriver driver=new ChromeDriver();
         //driver.manage().window().maximize();
         // if this does not work
 
         ChromeOptions options = new ChromeOptions();
         options.addArguments("window-size=1400,900");
-        WebDriver driver = new ChromeDriver(options);
+        driver = new ChromeDriver(options);
         driver.get("https://www.google.com");
 
         driver.quit();
