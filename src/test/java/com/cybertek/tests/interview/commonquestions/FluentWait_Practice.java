@@ -9,13 +9,14 @@ import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.support.ui.FluentWait;
 import org.openqa.selenium.support.ui.Wait;
 import org.testng.Assert;
+import org.testng.annotations.Test;
 
 import java.time.Duration;
 import java.util.function.Function;
 
 public  class FluentWait_Practice {
-
-    public static void main(String[] args) {
+    @Test
+    public void fluentWait() {
 
         WebDriverManager.chromedriver().setup();
         WebDriver driver = new ChromeDriver();
@@ -39,8 +40,5 @@ public  class FluentWait_Practice {
                 return driver.findElement(By.xpath("//div[@id='finish']/h4"));
             }
         });
-
-
     }
-   
 }
